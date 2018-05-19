@@ -48,7 +48,6 @@ end
 function ENT:Think()
 
 	if self:GetNWBool("Npc::InRobbing") then
-	local robber = self:GetNWInt("NPC::Robber")
 		timer.Simple(osshop.robduration,function()
 		 self:SetNWBool("Npc::InRobbing", false) 
 		 self:SetNWInt("NPC::Robber", nil) 
