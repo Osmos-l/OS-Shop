@@ -45,17 +45,6 @@ function ENT:AcceptInput(name, activator, caller)
 		end
 end
 
-function ENT:Think()
-
-	if self:GetNWBool("Npc::InRobbing") then
-		timer.Simple(osshop.robduration,function()
-		 self:SetNWBool("Npc::InRobbing", false) 
-		 self:SetNWInt("NPC::Robber", nil) 
-		self:SetNWInt("NPC::Timer", 0)
-		 end)
-	end
-end
-
 --[[
 Addon by Osmos[FR] : https://steamcommunity.com/id/ThePsyca/
 Info : Public Addon
