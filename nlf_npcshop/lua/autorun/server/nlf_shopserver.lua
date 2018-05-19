@@ -111,33 +111,28 @@ local id = net.ReadInt(32)
 end)
 
 net.Receive("Shop::RegisterNewItem",function(len, pl)
-local IsW = net.ReadString()
-local entname = net.ReadString()
-local entclass = net.ReadString()
-local entmodels = net.ReadString()
-local entprice = net.ReadString()
-local entdesc = net.ReadString()
+local info = net.ReadTable()
 
 if not osshop.staff[pl:GetUserGroup()] then return end
 
 local IsWeapoon 
-	if IsW == osshop.lang[kla].yes then
+	if info.isw == osshop.lang[kla].yes then
 		IsWeapoon = "true"
-	elseif IsW == osshop.lang[kla].no then
+	elseif info.isw == osshop.lang[kla].no then
 		IsWeapoon = "false"
 	else
 		DarkRP.notify(pl, 1, 4, "[Osshop] : "..osshop.lang[kla].txt22)	return
 	end
 
-	if (entname == osshop.lang[kla].txt13) then
+	if (info.name == osshop.lang[kla].txt13) then
 		DarkRP.notify(pl, 1, 4, "[ Osshop ] : "..osshop.lang[kla].txt23) return 
-	elseif (entclass == osshop.lang[kla].txt14) then
+	elseif (info.class == osshop.lang[kla].txt14) then
 		DarkRP.notify(pl, 1, 4, "[ Osshop ] : "..osshop.lang[kla].txt24)  return
-	elseif (entmodels == osshop.lang[kla].txt15) then
+	elseif (info.model == osshop.lang[kla].txt15) then
 		DarkRP.notify(pl, 1, 4, "[ Osshop ] : "..osshop.lang[kla].txt25) return
-	elseif (entprice == osshop.lang[kla].txt16) then
+	elseif (info.price == osshop.lang[kla].txt16) then
 		DarkRP.notify(pl, 1, 4, "[ Osshop ] : "..osshop.lang[kla].txt26) return
-	elseif (entdesc == osshop.lang[kla].txt17) then
+	elseif (info.desc == osshop.lang[kla].txt17) then
 		DarkRP.notify(pl, 1, 4, "[ Osshop ] : "..osshop.lang[kla].txt27) return
 	end
 
@@ -145,7 +140,7 @@ local IsWeapoon
 		osshop_createtable()
 	end
 
-	sql.Query("INSERT INTO osshop_data VALUES( NULL,'"..IsWeapoon.."','"..entname.."','"..entclass.."','"..entmodels.."','"..entdesc.."','"..entprice.."' ) ")
+	sql.Query("INSERT INTO osshop_data VALUES( NULL,'"..IsWeapoon.."','"..info.name.."','"..info.class.."','"..info.model.."','"..info.desc.."','"..info.price.."' ) ")
 		DarkRP.notify(pl, 0, 4, "[ Osshop ] : "..osshop.lang[kla].txt28)
 end)
 
@@ -201,26 +196,20 @@ local dataitem
 end)
 
 net.Receive("Shop::EditOldItem", function(len, pl)
-local id = net.ReadInt(32)
 local npc = net.ReadEntity()
-local IsW = net.ReadString()
-local entname = net.ReadString()
-local entclass = net.ReadString()
-local entmodels = net.ReadString()
-local entprice = net.ReadString()
-local entdesc = net.ReadString()
+local info = net.ReadTable()
 
 local IsWeapoon 
-	if IsW == osshop.lang[kla].yes then
+	if info.isw == osshop.lang[kla].yes then
 		IsWeapoon = "true"
-	elseif IsW == osshop.lang[kla].no then
+	elseif info.isw == osshop.lang[kla].no then
 		IsWeapoon = "false"
 	end
 
 if not osshop.staff[pl:GetUserGroup()] then return end
-	local itemt = sql.Query("SELECT * FROM osshop_data WHERE id ="..id)
+	local itemt = sql.Query("SELECT * FROM osshop_data WHERE id ="..info.id)
 	if not itemt then return end
-	sql.Query([[UPDATE osshop_data SET isweapon = "]]..IsWeapoon..[[", name = "]]..entname..[[", entclass = "]]..entclass..[[", models = "]]..entmodels..[[", desc = "]]..entdesc..[[", price = "]]..entprice..[[" WHERE id =]]..id)
+	sql.Query([[UPDATE osshop_data SET isweapon = "]]..IsWeapoon..[[", name = "]]..info.name..[[", entclass = "]]..info.class..[[", models = "]]..info.model..[[", desc = "]]..info.desc..[[", price = "]]..info.price..[[" WHERE id =]]..info.id)
 	DarkRP.notify(pl, 0, 4, "[Osshop] : "..osshop.lang[kla].txt30)
 
 						local myt = sql.Query("SELECT * FROM osshop_data")
@@ -269,12 +258,12 @@ net.Receive("Shop::StartRob", function(len, pl)
 
         timer.Simple(osshop.robduration, function()
             local pos = (npc:GetPos() + npc:GetAngles():Forward() * 50 + pl:GetAngles():Up() * 50)
-            DarkRP.createMoneyBag(pos, osshop.moneyatrob)
+            DarkRP.createMoneyBag(pos, 1500)
             DarkRP.notify(pl, 0, 4, osshop.lang[kla].txt35)
-	self:SetNWBool("Npc::InRobbing", false) 
-	self:SetNWInt("NPC::Robber", nil) 
-	self:SetNWInt("NPC::Timer", 0)
-             npc.robdelay = CurTime() + osshop.robdelay
+            npc:SetNWBool("Npc::InRobbing", false) 
+		    npc:SetNWInt("NPC::Robber", nil) 
+		    npc:SetNWInt("NPC::Timer", 0)
+            npc.robdelay = CurTime() + osshop.robdelay
         end)
     end
 end)

@@ -300,14 +300,18 @@ net.Receive("Shop::AddItem",function(len, pl)
     end
 
     acceptbut.DoClick = function()
+    local info = {
+
+    isw = isw:GetValue(),
+    name = entname:GetValue(),
+    class = entclass:GetValue(),
+    model = entmodels:GetValue(),
+    price = entprice:GetValue(),
+    desc = entdesc:GetValue()
+}
     surface.PlaySound("buttons/button14.wav")
         net.Start("Shop::RegisterNewItem")
-        net.WriteString(isw:GetValue())
-        net.WriteString(entname:GetValue())
-        net.WriteString(entclass:GetValue())
-        net.WriteString(entmodels:GetValue())
-        net.WriteString(entprice:GetValue())
-        net.WriteString(entdesc:GetValue())
+        net.WriteTable(info)
         net.SendToServer()
 
     firstp:Remove()
@@ -409,16 +413,22 @@ end
     end
 
     acceptbut.DoClick = function()
+    local info = {
+
+    id = txtent.id,
+    isw = isw:GetValue(),
+    name = entname:GetValue(),
+    class = entclass:GetValue(),
+    model = entmodels:GetValue(),
+    price = entprice:GetValue(),
+    desc = entdesc:GetValue()
+}
+
+
     surface.PlaySound("buttons/button14.wav")
         net.Start("Shop::EditOldItem")
-        net.WriteInt(txtent.id, 32)
         net.WriteEntity(npc)
-        net.WriteString(isw:GetValue())
-        net.WriteString(entname:GetValue())
-        net.WriteString(entclass:GetValue())
-        net.WriteString(entmodels:GetValue())
-        net.WriteString(entprice:GetValue())
-        net.WriteString(entdesc:GetValue())
+        net.WriteTable(info)
         net.SendToServer()
 
     firstp:Remove()

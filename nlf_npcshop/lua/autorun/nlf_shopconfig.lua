@@ -37,8 +37,6 @@ osshop.teamcops = {
 
 osshop.robdelay = 15 -- After rob, time need for the next rob ( in Seconds)
 
-osshop.moneyatrob = 1500
-
 osshop.robduration = 30 -- How the robbery duration ? ( In Seconds )
  
 --[[ NPC Config ]]--

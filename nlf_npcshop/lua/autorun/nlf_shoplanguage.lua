@@ -53,6 +53,8 @@ osshop.lang["FR"] = {
 
 	txt36 = "Un braquage est en cours !",
 
+	txt37 = "Braquage :",
+
 
 }
 
@@ -108,6 +110,8 @@ osshop.lang["EN"] = {
 	txt34 = "Braking started!",
 	txt35 = "Get the money and course!",
 
-	txt36 = "Robbery in progress"
+	txt36 = "Robbery in progress",
+
+	txt37 = "Robbery :",
 
 }
