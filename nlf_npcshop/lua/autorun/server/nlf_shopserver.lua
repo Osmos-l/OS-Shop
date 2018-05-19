@@ -269,7 +269,7 @@ net.Receive("Shop::StartRob", function(len, pl)
 
         timer.Simple(osshop.robduration, function()
             local pos = (npc:GetPos() + npc:GetAngles():Forward() * 50 + pl:GetAngles():Up() * 50)
-            DarkRP.createMoneyBag(pos, 1500)
+            DarkRP.createMoneyBag(pos, osshop.moneyatrob)
                         DarkRP.notify(pl, 0, 4, osshop.lang[kla].txt35)
              npc.robdelay = CurTime() + osshop.robdelay
         end)
