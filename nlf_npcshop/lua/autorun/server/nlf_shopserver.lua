@@ -51,7 +51,7 @@ local function copshud(npc)
         		net.Send(v)
 
         		timer.Simple(osshop.robduration,function() 
-        			net.Start("Shop::CopsHUD")
+        			net.Start("Shop-Client")
         			net.WriteInt(-6, 4)
         			net.WriteEntity(npc)
         			net.WriteBool(false)
