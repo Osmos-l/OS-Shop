@@ -35,7 +35,8 @@ function ENT:AcceptInput(name, activator, caller)
 				ntsend = {}
 			end
 
-			net.Start("Shop::Open")
+			net.Start("Shop-Client")
+			net.WriteInt(-8, 4)
 			net.WriteEntity(self)
 			net.WriteTable(ntsend)
 			net.Send(caller)

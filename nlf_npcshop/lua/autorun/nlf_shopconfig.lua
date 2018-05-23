@@ -11,33 +11,35 @@ osshop.lang = {}
 
 osshop.choice = "EN"
 
-osshop.staff = {
+osshop.Staff = {
 ["superadmin"] = true,
 ["admin"] = true,
 }
  
-osshop.additemcommand = "!shopadditem"
+osshop.AddItemCommand = "!osshopadd"
 
-osshop.antispam = false
+osshop.AntiSpam = false
 
 --[[ Robery config ]]--
 
-osshop.teamforrob = true 
+osshop.TeamForRob = true 
 
-osshop.teamrob = {
+osshop.TeamRob = {
 	["Robber"] = true, 
 
 }
 
-osshop.teamcops = {
+osshop.TeamCops = {
 	["Cops"] = true, 
 
 }
 
 
-osshop.robdelay = 15 -- After rob, time need for the next rob ( in Seconds)
+osshop.RobDelay = 15 -- After rob, time need for the next rob ( in Seconds)
 
-osshop.robduration = 30 -- How the robbery duration ? ( In Seconds )
+osshop.RobDuration = 30 -- How the robbery duration ? ( In Seconds )
+
+osshop.RobReward = 1500
  
 --[[ NPC Config ]]--
  

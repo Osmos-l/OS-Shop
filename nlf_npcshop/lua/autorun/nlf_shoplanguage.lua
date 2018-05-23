@@ -55,6 +55,14 @@ osshop.lang["FR"] = {
 
 	txt37 = "Braquage :",
 
+	txt38 = "Métier ajouté !",
+	txt39 = "Métier enlevé !",
+
+	txt40 = "Le métier fait déjà parti de la WhiteList pour cet item !",
+	txt41 = "Le métier ne fait pas parti de la WhiteList de cet item !",
+
+	txt42 = "Tu n'as pas le bon métier !"
+
 
 }
 
@@ -90,7 +98,7 @@ osshop.lang["EN"] = {
 
 	txt19 = "You don't have enough money !",
 	txt31 = "Wait a little before making a purchase",
-	txt20 = "You received you'r item",
+	txt20 = "You received your item",
 	txt21 = "Item spawn near of you",
 
 	txt22 = "'Is weapon' was not selected !",
@@ -103,7 +111,7 @@ osshop.lang["EN"] = {
 
 	txt29 = "Item delete",
 
-	txt30 = "Item amended",
+	txt30 = "Item edited",
 
 	txt32 = "You do not have the right job!",
 	txt33 = "A robbery has already taken place recently!",
@@ -113,5 +121,13 @@ osshop.lang["EN"] = {
 	txt36 = "Robbery in progress",
 
 	txt37 = "Robbery :",
+
+	txt38 = "Job added !",
+	txt39 = "Job removed !",
+
+	txt40 = "The job is already on the WhiteList !",
+	txt41 = "The job is not in the WhiteList !",
+
+	txt42 = "You don't have the good job for do that !"
 
 }
