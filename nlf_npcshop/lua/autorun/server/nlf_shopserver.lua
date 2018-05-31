@@ -126,7 +126,7 @@ net.Receive("Shop-Server", function(len, ply)
 		if not IsValid(npc) then return end
 		if not npc:GetClass() == "nlf_shopx" then return end
 		if npc:GetNWBool("Npc::InRobbing") then return end
-		if ply:GetPos():Distance(npc:GetPos())>14 then return end
+		if ply:GetPos():Distance(npc:GetPos())>110 then return end
 
 		if osshop.AntiSpam then
 			if ply.TimeDelay == nil then
@@ -302,7 +302,7 @@ net.Receive("Shop-Server", function(len, ply)
     	if not IsValid(npc) then return end
     	if not npc:GetClass() == "nlf_shopx" then return end
     	if npc:GetNWBool("Npc::InRobbing") then return end
-    	if ply:GetPos():Distance(npc:GetPos()) > 14 then return end
+    	if ply:GetPos():Distance(npc:GetPos()) > 110 then return end
 
        	if npc.RobDelay == nil then
             npc.RobDelay = 0
