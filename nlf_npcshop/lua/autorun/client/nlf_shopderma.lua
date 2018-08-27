@@ -544,10 +544,12 @@ end
 --[[ HOOK ]]--
 
 hook.Add("OnPlayerChat", "Shop::OpenNewItem", function(ply, strText)
-
-	if osshop.Staff[LocalPlayer():GetUserGroup()] and strText == osshop.AddItemCommand then
+	local lPlayer = LocalPlayer()
+	if ply != lPlayer then return end 
+		
+	if osshop.Staff[ lPlayer:GetUserGroup() ] and strText == osshop.AddItemCommand then
 			NewItem()
-		return " "
+		return true
 	end
 
 end)
