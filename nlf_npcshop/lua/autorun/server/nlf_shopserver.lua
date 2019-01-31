@@ -43,7 +43,7 @@ local kla = osshop.choice
 local function copshud(npc)
         for k, v in ipairs (  player.GetAll() ) do
         	if osshop.TeamCops[ team.GetName( v:Team() ) ] then
-			if !IsValid( v ) || v:IsAlive() then return end
+			if !IsValid( v ) || !v:IsAlive() then return end
 			
         		DarkRP.notify(v, 3, 4, osshop.lang[kla].txt36)
         		net.Start("Shop-Client")
