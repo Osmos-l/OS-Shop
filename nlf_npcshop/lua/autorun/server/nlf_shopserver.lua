@@ -38,11 +38,13 @@ concommand.Add("osshop_reloadtable", function(ply, cmd, args)
 end)
 
 --[[ HUD ]]--
+local kla = osshop.choice
 
 local function copshud(npc)
-        for k, v in pairs (  player.GetAll() ) do
-        	if osshop.TeamCops[team.GetName(v:Team())] then
-
+        for k, v in ipairs (  player.GetAll() ) do
+        	if osshop.TeamCops[ team.GetName( v:Team() ) ] then
+			if !IsValid( v ) || v:IsAlive() then return end
+			
         		DarkRP.notify(v, 3, 4, osshop.lang[kla].txt36)
         		net.Start("Shop-Client")
         		net.WriteInt(-6, 4)
@@ -50,7 +52,7 @@ local function copshud(npc)
         		net.WriteBool(true)
         		net.Send(v)
 
-        		timer.Simple(osshop.robduration,function() 
+        		timer.Simple(osshop.RobDuration,function() 
         			net.Start("Shop-Client")
         			net.WriteInt(-6, 4)
         			net.WriteEntity(npc)
@@ -62,8 +64,6 @@ local function copshud(npc)
 end
 
 --[[ Function ]]--
-
-local kla = osshop.choice
 
 net.Receive("Shop-Server", function(len, ply)
 	local where = net.ReadInt(4)
@@ -319,7 +319,7 @@ net.Receive("Shop-Server", function(len, ply)
         npc:SetNWInt("NPC::Timer", CurTime() + osshop.RobDuration)
         DarkRP.notify(ply, 0, 4, osshop.lang[kla].txt34)
 
-        timer.Simple(osshop.robduration, function()
+        timer.Simple(osshop.RobDuration, function()
             local pos = (npc:GetPos() + npc:GetAngles():Forward() * 50 + npc:GetAngles():Up() * 50)
            	DarkRP.createMoneyBag(pos, osshop.RobReward)
             DarkRP.notify(ply, 0, 4, osshop.lang[kla].txt35)
