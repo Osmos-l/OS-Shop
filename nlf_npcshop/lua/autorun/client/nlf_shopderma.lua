@@ -30,6 +30,7 @@ local icon2 = Material("osshop/edit.png")
 local icon3 = Material("osshop/delete.png")
 local icon4 = Material("osshop/rob.png")
 
+local scrw, scrh = ScrW(), ScrH()
 net.Receive("Shop-Client", function(len, pl)
 local where = net.ReadInt(4)
 
@@ -39,12 +40,12 @@ local where = net.ReadInt(4)
 
             shopfirstp = vgui.Create("DFrame")
         shopfirstp:SetSize(600, 600)
-        shopfirstp:SetPos(ScrW() * 0.35, ScrH())
+        shopfirstp:SetPos(scrw / 2 - 300, scrw)
         shopfirstp:SetTitle("")
         shopfirstp:SetDraggable(true)
         shopfirstp:ShowCloseButton(false)
         shopfirstp:MakePopup()
-        shopfirstp:MoveTo(ScrW() * 0.35, ScrH() * 0.25, 0.25, 0, 10)
+        shopfirstp:MoveTo(scrw / 2 - 300, scrh / 2 - 300, 0.25, 0, 10)
 
         function shopfirstp:Paint(w, h)
             blurPanel(self, 5)
