@@ -40,7 +40,7 @@ local where = net.ReadInt(4)
 
             shopfirstp = vgui.Create("DFrame")
         shopfirstp:SetSize(600, 600)
-        shopfirstp:SetPos(scrw / 2 - 300, scrw)
+        shopfirstp:SetPos(scrw / 2 - 300, scrh)
         shopfirstp:SetTitle("")
         shopfirstp:SetDraggable(true)
         shopfirstp:ShowCloseButton(false)
